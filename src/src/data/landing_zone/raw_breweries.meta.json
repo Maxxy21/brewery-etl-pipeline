@@ -1,0 +1,9 @@
+{
+  "extracted_at": "2026-07-11T19:50:53.094887+00:00",
+  "source_url": "https://api.openbrewerydb.org/v1/breweries",
+  "meta_total": 11745,
+  "records_seen": 11745,
+  "records_written": 11745,
+  "records_dropped_no_id": 0,
+  "pages_fetched": 59
+}
