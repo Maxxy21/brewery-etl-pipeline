@@ -5,6 +5,20 @@
 out
 gen
 
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
 
-.venv
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+
+
 src/data
