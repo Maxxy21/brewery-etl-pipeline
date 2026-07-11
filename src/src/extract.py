@@ -14,24 +14,26 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# 2. Strict API Data Contract (Aligned with API Spec)
+# Only `id` is required. Keeping the rest optional to let the landing zone hold every
+# record the API returns, including malformed ones; data cleaning would happen in the transform layer.
 class BreweryModel(BaseModel):
     model_config = ConfigDict(extra='ignore')  # ignores the duplicate state/street fields
 
     id: str
-    name: str
-    brewery_type: str
+    name: Optional[str] = None
+    brewery_type: Optional[str] = None
     address_1: Optional[str] = None
     address_2: Optional[str] = None
     address_3: Optional[str] = None
-    city: str
-    state_province: str
-    postal_code: str
-    country: str
+    city: Optional[str] = None
+    state_province: Optional[str] = None
+    postal_code: Optional[str] = None
+    country: Optional[str] = None
     longitude: Optional[float] = None
     latitude: Optional[float] = None
     phone: Optional[str] = None
     website_url: Optional[str] = None
+
 
 
 def run_extract_pipeline(output_dir="data/landing_zone"):
