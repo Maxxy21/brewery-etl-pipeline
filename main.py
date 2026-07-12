@@ -1,5 +1,5 @@
 """
-Runs the full pipeline: extract -> transform -> load.
+Run the full pipeline: extract -> transform -> load -> analytics -> visualize.
 """
 
 import sys
@@ -8,7 +8,8 @@ import logging
 from src.extract import run_extract_pipeline
 from src.transform import run_transform_pipeline
 from src.load import run_load_pipeline
-
+from src.analytics import run_analysis
+from src.visualize import run_visualization_pipeline
 
 logging.basicConfig(
     level=logging.INFO,
@@ -21,7 +22,9 @@ logger = logging.getLogger("pipeline")
 def main():
     raw_path = run_extract_pipeline(output_dir="data/landing_zone")
     clean_path = run_transform_pipeline(raw_path)
-    run_load_pipeline(clean_path)
+    db_path = run_load_pipeline(clean_path)
+    run_analysis(db_path)
+    run_visualization_pipeline()
     logger.info("Pipeline finished.")
 
 
