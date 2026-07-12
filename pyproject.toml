@@ -1,15 +1,27 @@
 [project]
 name = "brewery-etl-pipeline"
 version = "0.1.0"
-description = "Add your description here"
+description = "End to end ETL pipeline for the Open Brewery DB API: extract, transform, load to SQLite, analyze, and visualize."
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.12"
 dependencies = [
+    "fastapi>=0.115.0",
     "matplotlib>=3.11.0",
     "numpy>=2.5.1",
     "pandas>=3.0.3",
-    "pandas-stubs~=3.0.3",
     "pydantic>=2.13.4",
     "requests>=2.34.2",
     "seaborn>=0.13.2",
+    "uvicorn[standard]>=0.32.0",
 ]
+
+[dependency-groups]
+dev = [
+    "pandas-stubs~=3.0.3",
+    "pytest>=9.1.1",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
