@@ -21,4 +21,12 @@ env/
 .env
 
 
+# The analysis outputs in data/analytics_zone/ (CSVs + chart PNGs) are kept, since the
+# README embeds the charts and they document the results.
+data/landing_zone/
+data/processed_zone/
+data/database/
+data/analytics_zone/analytics
+
+
 src/data
