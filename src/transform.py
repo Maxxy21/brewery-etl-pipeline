@@ -5,14 +5,13 @@ import pandas as pd
 
 logger = logging.getLogger(__name__)
 
-
 def parse_korean_phone_prefix(phone_val) -> float | str:
     """
     Return the dialing prefix of a South Korean phone number, or NaN if unrecognized.
 
     Based on the numbering plan (https://en.wikipedia.org/wiki/Telephone_numbers_in_South_Korea):
     Seoul is '02', other trunk numbers give their 3-digit prefix (031, 051, 070, ...),
-    and national service numbers (15xx/16xx/18xx) have no trunk zero so we keep 4 digits.
+    and national service numbers (15xx/16xx/18xx) have no trunk zero, so we keep 4 digits.
     """
     if pd.isna(phone_val):
         return np.nan

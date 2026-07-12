@@ -8,11 +8,6 @@ from typing import Optional
 import requests
 from pydantic import BaseModel, ConfigDict, ValidationError
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - [%(filename)s:%(lineno)d] - %(message)s',
-    datefmt='%m/%d/%Y %H:%M:%S',
-)
 logger = logging.getLogger(__name__)
 
 BASE_URL = "https://api.openbrewerydb.org/v1/breweries"
