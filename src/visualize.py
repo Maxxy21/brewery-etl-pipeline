@@ -85,7 +85,7 @@ def _korea_phone_heatmap(csv_path, out_path):
     fig.suptitle('South Korean Brewery Phone Patterns by Province',
                  fontsize=14, fontweight='bold', y=0.98)
     fig.text(0.5, 0.925,
-             "Small sample (n=61); provinces with 1-2 sites are not statistically robust.",
+             "Small sample (n=61); provinces with 1-2 sites are too few to read much into.",
              ha='center', fontsize=10, color='firebrick')
     plt.xlabel('Phone type', fontweight='bold', labelpad=10)
     plt.ylabel('Province', fontweight='bold', labelpad=10)
@@ -96,7 +96,7 @@ def _korea_phone_heatmap(csv_path, out_path):
     plt.close()
 
 
-def run_visualization_pipeline(input_dir: str = "data/analytics_zone",
+def run_visualization_pipeline(input_dir: str = "data/analytics_zone/analytics",
                                output_dir: str = "data/analytics_zone/visualizations"):
     """Build the three charts from the analytics CSVs."""
     os.makedirs(output_dir, exist_ok=True)

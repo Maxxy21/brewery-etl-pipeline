@@ -6,7 +6,7 @@ import pandas as pd
 logger = logging.getLogger(__name__)
 
 
-def run_analysis(db_path: str, output_dir: str = "data/analytics_zone"):
+def run_analysis(db_path: str, output_dir: str = "data/analytics_zone/analytics"):
     """Answer the four questions with SQL and save the aggregates as CSVs."""
     if not os.path.exists(db_path):
         raise FileNotFoundError(f"Database not found at {db_path}. Run load.py first.")

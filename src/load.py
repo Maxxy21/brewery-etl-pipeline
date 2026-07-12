@@ -43,7 +43,7 @@ def run_load_pipeline(input_path: str, db_dir: str = "data/database") -> str:
 
     try:
         cursor = conn.cursor()
-        # One transaction: if the insert fails the DROP rolls back and the old table stays.
+        # One transaction: if the insert fails, the DROP rolls back and the old table stays.
         cursor.execute("BEGIN TRANSACTION;")
         cursor.execute("DROP TABLE IF EXISTS breweries;")
         cursor.execute(CREATE_TABLE)
@@ -61,7 +61,7 @@ def run_load_pipeline(input_path: str, db_dir: str = "data/database") -> str:
             raise RuntimeError(f"Expected {expected_rows} rows, found {landed_rows}.")
         logger.info(f"Loaded {landed_rows} rows into {db_path}")
 
-        # Quick check against the /meta figures (micro 5788, brewpub 3909).
+        # Quick check against the /meta figures.
         for btype, count in conn.execute(
             "SELECT brewery_type, COUNT(*) FROM breweries "
             "WHERE brewery_type IN ('micro', 'brewpub') GROUP BY brewery_type;"
